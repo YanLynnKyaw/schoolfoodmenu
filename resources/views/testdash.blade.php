@@ -27,7 +27,7 @@
            
              @foreach($schools as $school)
                 <li>
-                    <a href="" data-menu="school-{{ $school->id }}" class="{{ Request::is('schools/'.$school->id) ? 'active' : '' }}">
+                    <a href="{{ route ('canteens.index')}}" data-menu="school-{{ $school->id }}" class="{{ Request::is('schools/'.$school->id) ? 'active' : '' }}">
                     <i class='bx bxs-user-detail' ></i>{{ $school->school_name }}
                     </a>
                 </li>

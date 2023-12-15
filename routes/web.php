@@ -8,9 +8,11 @@ use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FoodmenuController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\CanteenController;
 
 use App\Models\School;
 use App\Models\Food;
+use App\Models\Canteen;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,7 +70,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard',[SchoolController::class, 'index'])->name('dashboard');
     Route::resource('/home', SchoolController::class);
 
-
+    //Canteen
+    Route::resource('canteens',CanteenController::class);
+    Route::get('/canteens/create', [CanteenController::class, 'create'])->name('canteens.create');
     
 
     Route::delete('/user/{id}', [UsersController::class,'destroy'])->name('users.delete');

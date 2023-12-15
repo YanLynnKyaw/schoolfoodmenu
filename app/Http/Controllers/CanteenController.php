@@ -3,28 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Canteen;
 
 class CanteenController extends Controller
 {
     public function index()
     {
         $canteens = Canteen::all();
-        return view('Canteens.shwoCanteen', ['canteens' => $canteens]);
+        return view('Canteens.showCanteen', ['canteens' => $canteens]);
     }
 
     public function create()
     {
-        return view('canteens.create');
+        return view('Canteens.createCanteen');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:canteens|max:255',
+            'canteen_name' => 'required|unique:canteens|max:255',
             // Add other validation rules as needed
         ]);
 
-        Canteen::create($request->all());
+        Canteen::create([
+            'canteen_name' => $request->input('canteen_name'),
+            'school_id' => $request->input('school_id')
+        ]);
 
         return redirect()->route('canteens.index')->with('success', 'Canteen has been created');
     }
@@ -42,7 +46,7 @@ class CanteenController extends Controller
     public function update(Request $request, Canteen $canteen)
     {
         $request->validate([
-            'name' => 'required|unique:canteens|max:255',
+            'canteen_name' => 'required|unique:canteens|max:255',
             // Add other validation rules as needed
         ]);
 
