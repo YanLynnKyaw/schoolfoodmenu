@@ -31,7 +31,7 @@ class SchoolController extends Controller
     }
     public function edit(School $schools)
     {
-        return view ('schools.edit',compact('school'));
+        return view ('schools.edit',compact('schools'));
     }
 
     public function update(Request $request, School $schools)
@@ -40,13 +40,13 @@ class SchoolController extends Controller
             'shool_name' => 'required|unique:schools|max:255'
         ]);
 
-        $school->update($request->all());
+        $schools->update($request->all());
 
         return redirect()->route('schools.index')->with('success', 'School has been updated');
     }
-    public function destory(School $school)
+    public function destory(School $schools)
     {
-        $school->delete();
+        $schools->delete();
 
         return redirect()->route('schools.index')->with('success', 'school has been deleted');
     }

@@ -30,13 +30,7 @@
             <!-- <li><a href="#"><i class='bx bx-group' ></i>Student Create</a></li> -->
             <li><a href="{{ route ('users.index')}}" data-menu="users-management" class="{{ Request::is('users*') ? 'active' : '' }}"><i class='bx bxs-user-detail' ></i>Users Management</a></li>
             <!-- <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li> -->
-            @foreach($schools as $school)
-                <li>
-                    <a href="{{ route('schools.show', $school->id) }}" data-menu="school-{{ $school->id }}" class="{{ Request::is('schools/'.$school->id) ? 'active' : '' }}">
-                        {{ $school->name }}
-                    </a>
-                </li>
-            @endforeach
+           
         </ul>
         <ul class="side-menu">
             <li class="de">

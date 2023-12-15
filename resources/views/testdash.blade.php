@@ -18,17 +18,16 @@
             <div class="logo-name"><span>Chimp</span>Pro</div>
         </a>
         <ul class="side-menu">
-            <a href="{{ route('schools.create') }}" class="newbtn2">Add School</a>
+            <a href="{{ route('schools.create') }}" class="newbtn2 " style="margin-left:17px;"><span>Add School</span></a>
             <li><a href="{{ route('dashboard') }}" data-menu="dashboard" class="{{ Request::is('dashboard*') ? 'active' : '' }}"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
             <!-- <li><a href="#"><i class='bx bx-group' ></i>Student Create</a></li> -->
             <li><a href="{{ route ('users.index')}}" data-menu="users-management" class="{{ Request::is('users*') ? 'active' : '' }}"><i class='bx bxs-user-detail' ></i>Users Management</a></li>
 
             
            
-
              @foreach($schools as $school)
                 <li>
-                    <a href="{{ route('schools.show', $school->id) }}" data-menu="school-{{ $school->id }}" class="{{ Request::is('schools/'.$school->id) ? 'active' : '' }}">
+                    <a href="" data-menu="school-{{ $school->id }}" class="{{ Request::is('schools/'.$school->id) ? 'active' : '' }}">
                     <i class='bx bxs-user-detail' ></i>{{ $school->school_name }}
                     </a>
                 </li>

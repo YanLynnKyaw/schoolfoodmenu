@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Canteen extends Model
 {
-    use HasFactory;
+    protected $fillable = ['canteen_name'];
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }
