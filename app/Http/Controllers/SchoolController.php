@@ -27,7 +27,7 @@ class SchoolController extends Controller
     }
     public function show (School $schools)
     {
-        return view('Shools.showSchool', compact('school'));
+        return view('Schools.showSchool', ['schools' => $schools]);
     }
     public function edit(School $schools)
     {

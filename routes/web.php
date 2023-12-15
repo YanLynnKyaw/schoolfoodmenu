@@ -7,9 +7,9 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FoodmenuController;
 use App\Http\Controllers\ExcelController;
-
 use App\Http\Controllers\SchoolController;
 
+use App\Models\School;
 use App\Models\Food;
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +65,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('schools', SchoolController::class);
     Route::get('/schools/{school}', [SchoolController::class, 'show'])->name('schools.show');
     Route::get('/schools/create', [SchoolController::class, 'create'])->name('schools.create');
-
+    Route::get('/dashboard',[SchoolController::class, 'index'])->name('dashboard');
+    Route::resource('/home', SchoolController::class);
 
 
     
