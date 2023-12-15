@@ -26,7 +26,13 @@
             
            
 
-             
+             @foreach($schools as $school)
+                <li>
+                    <a href="{{ route('schools.show', $school->id) }}" data-menu="school-{{ $school->id }}" class="{{ Request::is('schools/'.$school->id) ? 'active' : '' }}">
+                        {{ $school->name }}
+                    </a>
+                </li>
+            @endforeach
             
             <!-- <li><a href="#"><i class='bx bx-cog bx-spin' ></i>Setting</a></li> -->
             <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
