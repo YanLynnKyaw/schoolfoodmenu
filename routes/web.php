@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Canteen
     Route::resource('canteens',CanteenController::class);
-    Route::get('/canteens/create', [CanteenController::class, 'create'])->name('canteens.create');
+    Route::get('/canteens/{id}/create', [CanteenController::class, 'create']);
     
 
     Route::delete('/user/{id}', [UsersController::class,'destroy'])->name('users.delete');
@@ -84,4 +84,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/users/create', [AuthController::class,'create'])->name('users.create');
     Route::post('/users', [AuthController::class,'store'])->name('users.store');
 
+    Route::get('/dashboard/{id}',[FoodController::class, 'index']);
 });

@@ -26,7 +26,7 @@
                         <label class="col-sm-2 col-lable-form">Canteen</label>
                         <div class="col-sm-10">
                             <input type="text" name="canteen_name" class="form-control"/>
-                            <input type="hidden" name="school_id" value="{{ $school->id }}">
+                            <input type="hidden" name="school_id" value="{{ $current_school }}">
                         </div>
                     </div>
 

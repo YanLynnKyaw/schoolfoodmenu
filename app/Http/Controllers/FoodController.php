@@ -24,7 +24,8 @@ class FoodController extends Controller
         $breakfastData = Food::where('category', 'Breakfast')->get();
         $data = Food::latest()->paginate(5);
     
-        return view('testdash', compact('softDrinkData', 'lunchData', 'breakfastData','data'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('testdash', compact('softDrinkData', 'lunchData', 'breakfastData','data'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
 

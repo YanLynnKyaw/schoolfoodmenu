@@ -16,11 +16,15 @@
             <div class="logo-name"><span>Chimp</span>Pro</div>
         </a>
         <ul class="side-menu">
-            <!-- <a href="{{ route('schools.create') }}" class="newbtn2 " style="margin-left:17px;"><span>Add School</span></a> -->
             <li><a href="{{ route('dashboard') }}" data-menu="dashboard" class="{{ Request::is('dashboard*') ? 'active' : '' }}"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <!-- <li><a href="#"><i class='bx bx-group' ></i>Student Create</a></li> -->
             <li><a href="{{ route ('users.index')}}" data-menu="users-management" class="{{ Request::is('users*') ? 'active' : '' }}"><i class='bx bxs-user-detail' ></i>Users Management</a></li>
-
+            @foreach($schools as $school)
+                <li>
+                    <a href="{{ route ('canteens.index')}}/{{ $school->id }}" data-menu="school-{{ $school->id }}" class="{{ Request::is('schools/'.$school->id) ? 'active' : '' }}">
+                    <i class='bx bxs-user-detail' ></i>{{ $school->school_name }}
+                    </a>
+                </li>
+            @endforeach
             
            
              
@@ -88,7 +92,7 @@
                         <!-- <i class='bx bx-filter'></i>
                         <i class='bx bx-search'></i> -->
                         @if(auth()->user()->can('ed_de','view_only')|| auth()->user()->can('view_only'))
-                        <a href="{{ route('canteens.create') }}" class="newbtn2">Add Canteen</a>
+                        <a href="/canteens/{{ $current_school }}/create" class="newbtn2">Add Canteen</a>
                         @endif
                         <!-- <form action="{{ route('logout') }}" method="POST">
                             @csrf
@@ -105,30 +109,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                @if(!empty($data) && (is_array($data) || $data instanceof Countable) && count($data)>0)
                     @foreach ($canteens as $canteen)
                         <tr>
                             <td>{{ $canteen->canteen_name }}</td>
-                            <td>{{ $row->food_price }}</td>
-                            <td class="butt">
-                                <form action="{{ route('food.destroy', $row->id ) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="{{ route('food.show', $row->id ) }}" class="newbtn"><span class="newbtn_top">View</span></a>
-                                    @if(auth()->user()->can('ed_de')|| auth()->user()->can('view_only'))
-                                        <a href="{{ route('food.edit', $row->id ) }}" class="newbtn"><span class="newbtn_top">Edit</span></a>
-                                        <input type="submit" class="newbtn1" value="Delete">
-                                    @endif
-                                    
-                                </form>
-                            </td>
+                            <td><a href="#" class="newbtn2">Edit</a></td>
                         </tr>
                     @endforeach
-                @else
-                    <tr>
-                        <td  class="text-center">No Data Found</td>
-                    </tr>
-                @endif
                         </tbody>
                     </table>
                 </div>   
